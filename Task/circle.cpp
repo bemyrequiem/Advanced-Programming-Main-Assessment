@@ -5,7 +5,7 @@
 #include "movable.h"
 #include "circle.h"
 
-const float pi = 3.1415927f;
+const int pi = 3.1415927;
 
 Circle::Circle() {
 	origin = (Point(0, 0));
@@ -17,7 +17,7 @@ Circle::Circle() {
 	update();
 }
 
-Circle::Circle(float radius) {
+Circle::Circle(int radius) {
 	origin = (Point(0, 0));
 	this->radius = radius;
 	area = 0;
@@ -27,7 +27,7 @@ Circle::Circle(float radius) {
 	update();
 }
 
-Circle::Circle(float x, float y, float radius) {
+Circle::Circle(int x, int y, int radius) {
 	origin = (Point(x, y));
 	this->radius = radius;
 	area = 0;
@@ -38,13 +38,12 @@ Circle::Circle(float x, float y, float radius) {
 }
 
 void Circle::initialisePoints() {
-	float min_x = origin.getPoint().first;
-	float min_y = origin.getPoint().second;
-	float max_x = origin.getPoint().first + 2 * radius;
-	float max_y = origin.getPoint().second + 2 * radius;
+	int min_x = origin.getPoint().first;
+	int min_y = origin.getPoint().second;
+	int max_x = origin.getPoint().first + 2 * radius;
+	int max_y = origin.getPoint().second + 2 * radius;
 
-	Point corner1(min_x, min_y);
-	addPoint(corner1);
+	addPoint(origin);
 	Point corner2(max_x, min_y);
 	addPoint(corner2);
 }
@@ -66,12 +65,12 @@ void Circle::calculatePerimeter() {
 }
 
 void Circle::calculatePoints() {
-	float min_x = origin.getPoint().first;
-	float min_y = origin.getPoint().second;
-	float max_x = origin.getPoint().first + 2 * radius;
-	float max_y = origin.getPoint().second + 2 * radius;
+	
+	int min_x = origin.getPoint().first;
+	int min_y = origin.getPoint().second;
+	int max_x = origin.getPoint().first + 2 * radius;
+	int max_y = origin.getPoint().second + 2 * radius;
 
-	points[0]->setPoint(min_x, min_y);
 	points[1]->setPoint(max_x, max_y);
 }
 
@@ -88,18 +87,18 @@ std::string Circle::toString() {
 	return description.str();
 }
 
-void Circle::move(float x_translation, float y_translation) {
+void Circle::move(int x_translation, int y_translation) {
 	Point translation(x_translation, y_translation);
 	origin = origin + translation;
 	update();
 }
 
-void Circle::scale(float multiplier) {
+void Circle::scale(int multiplier) {
 	radius = radius * multiplier;
 	update();
 }
 
-void Circle::scale(float x_multiplier, float y_multiplier) {
+void Circle::scale(int x_multiplier, int y_multiplier) {
 	throw std::invalid_argument("Error: Square type can only be scaled equally");
 }
 

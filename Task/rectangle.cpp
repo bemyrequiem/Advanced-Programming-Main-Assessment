@@ -16,7 +16,7 @@ Rectangle::Rectangle() {
 	update();
 }
 
-Rectangle::Rectangle(float width, float height) {
+Rectangle::Rectangle(int width, int height) {
 	origin = (Point(0, 0));
 	this->width = width;
 	this->height = height;
@@ -27,7 +27,7 @@ Rectangle::Rectangle(float width, float height) {
 	update();
 }
 
-Rectangle::Rectangle(float x, float y, float width, float height) {
+Rectangle::Rectangle(int x, int y, int width, int height) {
 	origin = (Point(x, y));
 	this->width = width;
 	this->height = height;
@@ -39,13 +39,12 @@ Rectangle::Rectangle(float x, float y, float width, float height) {
 }
 
 void Rectangle::initialisePoints() {
-	float min_x = origin.getPoint().first;
-	float min_y = origin.getPoint().second;
-	float max_x = origin.getPoint().first + width;
-	float max_y = origin.getPoint().second + height;
+	int min_x = origin.getPoint().first;
+	int min_y = origin.getPoint().second;
+	int max_x = origin.getPoint().first + width;
+	int max_y = origin.getPoint().second + height;
 
-	Point corner1(min_x, min_y);
-	addPoint(corner1);
+	addPoint(origin);
 	Point corner2(max_x, min_y);
 	addPoint(corner2);
 	Point corner3(max_x, max_y);
@@ -71,12 +70,11 @@ void Rectangle::calculatePerimeter() {
 }
 
 void Rectangle::calculatePoints() {
-	float min_x = origin.getPoint().first;
-	float min_y = origin.getPoint().second;
-	float max_x = origin.getPoint().first + width;
-	float max_y = origin.getPoint().second + height;
+	int min_x = origin.getPoint().first;
+	int min_y = origin.getPoint().second;
+	int max_x = origin.getPoint().first + width;
+	int max_y = origin.getPoint().second + height;
 
-	points[0]->setPoint(min_x, min_y);
 	points[1]->setPoint(max_x, min_y);
 	points[2]->setPoint(max_x, max_y);
 	points[3]->setPoint(min_x, max_y);
@@ -96,19 +94,19 @@ std::string Rectangle::toString() {
 	return description.str();
 }
 
-void Rectangle::move(float x_translation, float y_translation) {
+void Rectangle::move(int x_translation, int y_translation) {
 	Point translation(x_translation, y_translation);
 	origin = origin + translation;
 	update();
 }
 
-void Rectangle::scale(float multiplier) {
+void Rectangle::scale(int multiplier) {
 	width = width * multiplier;
 	height = height * multiplier;
 	update();
 }
 
-void Rectangle::scale(float x_multiplier, float y_multiplier) {
+void Rectangle::scale(int x_multiplier, int y_multiplier) {
 	width = width * x_multiplier;
 	height = height * y_multiplier;
 	update();

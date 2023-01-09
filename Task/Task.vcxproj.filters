@@ -21,9 +21,6 @@
     <ClCompile Include="shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="movable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="circle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

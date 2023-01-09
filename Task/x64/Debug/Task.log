@@ -1,2 +1,14 @@
 ﻿  drive.cpp
-  Task.vcxproj -> C:\Users\Alfie\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\x64\Debug\Task.exe
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(47,4): error C2065: 'x': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(53,33): error C2065: 'x': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(53,36): error C2065: 'y': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(53,39): error C2065: 'h': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(53,42): error C2065: 'w': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(61,27): error C2065: 'x': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(61,30): error C2065: 'y': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(61,33): error C2065: 'e': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(69,27): error C2065: 'x': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(69,30): error C2065: 'y': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(69,33): error C2065: 'r': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(91,12): error C2065: 'x': undeclared identifier
+C:\Users\user\OneDrive\Uni Assignments\Year 2\AdvancedProgramming\Assessment 2\Task\drive.cpp(91,15): error C2065: 'y': undeclared identifier

@@ -6,8 +6,9 @@
 class Shape {
 
 private:
-	float area;
-	float perimeter;
+	
+	int area;
+	int perimeter;
 	Point origin;
 	bool is_circular;
 	std::vector<Point*> points;

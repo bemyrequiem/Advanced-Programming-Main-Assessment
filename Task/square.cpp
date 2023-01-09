@@ -15,7 +15,7 @@ Square::Square() {
 	update();
 }
 
-Square::Square(float side) {
+Square::Square(int side) {
 	origin = (Point(0, 0));
 	this->side = side;
 	area = 0;
@@ -25,7 +25,7 @@ Square::Square(float side) {
 	update();
 }
 
-Square::Square(float x, float y, float side) {
+Square::Square(int x, int y, int side) {
 	origin = (Point(x, y));
 	this->side = side;
 	area = 0;
@@ -36,13 +36,12 @@ Square::Square(float x, float y, float side) {
 }
 
 void Square::initialisePoints() {
-	float min_x = origin.getPoint().first;
-	float min_y = origin.getPoint().second;
-	float max_x = origin.getPoint().first + side;
-	float max_y = origin.getPoint().second + side;
+	int min_x = origin.getPoint().first;
+	int min_y = origin.getPoint().second;
+	int max_x = origin.getPoint().first + side;
+	int max_y = origin.getPoint().second + side;
 
-	Point corner1(min_x, min_y);
-	addPoint(corner1);
+	addPoint(origin);
 	Point corner2(max_x, min_y);
 	addPoint(corner2);
 	Point corner3(max_x, max_y);
@@ -68,12 +67,11 @@ void Square::calculatePerimeter() {
 }
 
 void Square::calculatePoints() {
-	float min_x = origin.getPoint().first;
-	float min_y = origin.getPoint().second;
-	float max_x = origin.getPoint().first + side;
-	float max_y = origin.getPoint().second + side;
+	int min_x = origin.getPoint().first;
+	int min_y = origin.getPoint().second;
+	int max_x = origin.getPoint().first + side;
+	int max_y = origin.getPoint().second + side;
 
-	points[0]->setPoint(min_x, min_y);
 	points[1]->setPoint(max_x, min_y);
 	points[2]->setPoint(max_x, max_y);
 	points[3]->setPoint(min_x, max_y);
@@ -92,18 +90,18 @@ std::string Square::toString() {
 	return description.str();
 }
 
-void Square::move(float x_translation, float y_translation) {
+void Square::move(int x_translation, int y_translation) {
 	Point translation(x_translation, y_translation);
 	origin = origin + translation;
 	update();
 }
 
-void Square::scale(float multiplier) {
+void Square::scale(int multiplier) {
 	side = side * multiplier;
 	update();
 }
 
-void Square::scale(float x_multiplier, float y_multiplier) {
+void Square::scale(int x_multiplier, int y_multiplier) {
 	throw std::invalid_argument("Error: Square type can only be scaled equally");
 }
 

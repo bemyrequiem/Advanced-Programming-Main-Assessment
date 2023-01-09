@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="circle.cpp" />
     <ClCompile Include="drive.cpp" />
-    <ClCompile Include="movable.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="shape.cpp" />
