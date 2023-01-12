@@ -5,75 +5,73 @@
 #include "movable.h"
 #include "circle.h"
 
-const int pi = 3.1415927;
+const double pi = 3.1415927; // Initialising a const pi variable
 
+// Default constructor initializing origin at (0,0), radius, area and perimeter to 0, and sets is_circular to true
 Circle::Circle() {
 	origin = (Point(0, 0));
 	radius = 0;
 	area = 0;
 	perimeter = 0;
 	is_circular = true;
-	initialisePoints();
 	update();
 }
 
-Circle::Circle(int radius) {
+// Initializes radius to given value, origin at (0,0), area and perimeter to 0, and sets is_circular to true
+Circle::Circle(double radius) {
 	origin = (Point(0, 0));
 	this->radius = radius;
 	area = 0;
 	perimeter = 0;
 	is_circular = true;
-	initialisePoints();
 	update();
 }
 
-Circle::Circle(int x, int y, int radius) {
+// Initializes radius, x and y coordinates to given values, area and perimeter to 0, and sets is_circular to true
+Circle::Circle(double x, double y, double radius) {
 	origin = (Point(x, y));
 	this->radius = radius;
 	area = 0;
 	perimeter = 0;
 	is_circular = true;
-	initialisePoints();
 	update();
 }
 
-void Circle::initialisePoints() {
-	int min_x = origin.getPoint().first;
-	int min_y = origin.getPoint().second;
-	int max_x = origin.getPoint().first + 2 * radius;
-	int max_y = origin.getPoint().second + 2 * radius;
-
-	addPoint(origin);
-	Point corner2(max_x, min_y);
-	addPoint(corner2);
-}
-
+// Returns a const reference to the points vector
 const std::vector<Point*>& Circle::getPoints() const {
 	return points;
 }
 
-void Circle::addPoint(Point& point) {
-	points.push_back(&point);
+// Adds a point to the points vector
+void Circle::addPoint(Point point) {
+	points.push_back(new Point(point));
 }
 
+// Calculates the area of the circle using radius and pi
 void Circle::calculateArea() {
-	area = pi * radius * radius;
+	auto calculateArea = [this]() { return pi * radius * radius; };
+	area = calculateArea();
 }
 
+// Calculates the perimeter of the circle using radius and pi
 void Circle::calculatePerimeter() {
 	perimeter = 2 * pi * radius;
 }
 
+// Clears the points vector and calculates the 2 corner points of the circle
 void Circle::calculatePoints() {
-	
-	int min_x = origin.getPoint().first;
-	int min_y = origin.getPoint().second;
-	int max_x = origin.getPoint().first + 2 * radius;
-	int max_y = origin.getPoint().second + 2 * radius;
+	points.clear();
+	double min_x = origin.getPoint().first;
+	double min_y = origin.getPoint().second;
+	double max_x = origin.getPoint().first + 2 * radius;
+	double max_y = origin.getPoint().second + 2 * radius;
 
-	points[1]->setPoint(max_x, max_y);
+	addPoint(origin);
+	Point corner2(max_x, max_y);
+	addPoint(corner2);
 }
 
+// Returns a string description of the circle including origin, radius, area, perimeter and corner points
 std::string Circle::toString() {
 	std::stringstream description;
 	description << "\n==========Circle==========\n"
@@ -87,21 +85,27 @@ std::string Circle::toString() {
 	return description.str();
 }
 
-void Circle::move(int x_translation, int y_translation) {
-	Point translation(x_translation, y_translation);
-	origin = origin + translation;
+// Moves the circle based on the user inputted translation
+void Circle::move(double x_translation, double y_translation) {
+	// Point translation(x_translation, y_translation);
+	// origin = origin + translation;
+	origin.setPoint(x_translation, y_translation);
 	update();
 }
 
-void Circle::scale(int multiplier) {
-	radius = radius * multiplier;
+// Scales the circle based on the user inputted multiplier
+void Circle::scale(double multiplier) {
+	double t_radius = radius;
+	radius = t_radius * multiplier;
 	update();
 }
 
-void Circle::scale(int x_multiplier, int y_multiplier) {
-	throw std::invalid_argument("Error: Square type can only be scaled equally");
+// Scales the circle based on the user inputted multipliers for both the x and y axis
+void Circle::scale(double x_multiplier, double y_multiplier) {
+	throw std::invalid_argument("Error: Circle type can only be scaled equally");
 }
 
+// Overload the << operator to output the circle's toString method
 std::ostream& operator<<(std::ostream& out, Circle& circle) {
 	out << circle.toString();
 	return out;
